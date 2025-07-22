@@ -58,30 +58,84 @@
 // console.log(extractNumbers("Items: 10, Cost: 5.99, Discount: 0.5"));             // [10, 5.99, 0.5]
 // console.log(extractNumbers("Invoice #007, total 99.99USD."));
 
-//! sətirlərin Ekranlaşdırması (Escaping) və Konkatenasiyası (Concatenation)
+//! sətirlərin Ekranlaşdırması (Escaping) və Konkatenasiyası (Concatenation) -----------------
 
-//todo  Ekranlaşdırma (Escaping)
-console.log("Bu setirlerde \' isaresini gormek ucun siz \\ simvolundan istifade etmelisiniz");
-console.log("Yeni setirden yazmaq ucun \n \\n yazmaniz besdir")
-console.log("Tabulasiya (tab) simvolu \t \\t seklinde yazilir")
+// //todo  Ekranlaşdırma (Escaping)
+// console.log("Bu setirlerde \' isaresini gormek ucun siz \\ simvolundan istifade etmelisiniz");
+// console.log("Yeni setirden yazmaq ucun \n \\n yazmaniz besdir")
+// console.log("Tabulasiya (tab) simvolu \t \\t seklinde yazilir")
 
-//todo Konkatenasiya (Concatenation);
-const lst = " vasitesi ile setirleri birlesdiririk";
+// //todo Konkatenasiya (Concatenation);
+// const lst = " vasitesi ile setirleri birlesdiririk";
 
-//*1
-console.log("1) bunun" + lst);
+// //*1
+// console.log("1) bunun" + lst);
 
-//*2
-const pt1 = "2)";
-const pt2 = "bunun";
-const res = pt1.concat(" ", pt2, lst);
-console.log(res);
+// //*2
+// const pt1 = "2)";
+// const pt2 = "bunun";
+// const res = pt1.concat(" ", pt2, lst);
+// console.log(res);
 
-//*3
-const name = "Ali";
-const age = 23;
-const like = "cats";
+// //*3
+// const name = "Ali";
+// const age = 23;
+// const like = "cats";
 
-console.log(`My name is ${name}, im ${age} years old, i like ${like}`);
-console.log(`My name is ${name}, im ${age} 
-  years old,        i like ${like}`);
+// console.log(`My name is ${name}, im ${age} years old, i like ${like}`);
+// console.log(`My name is ${name}, im ${age} 
+//   years old,        i like ${like}`); //* (\t ve \n istifade etmeden rahat bir sekildi yazildigi formada ekrana cixara bildik);
+
+//! trim() ----------------------------
+
+// const str = "     I have space     ";
+// const noSpace = str.trim();
+// console.log(`'${str}'`);
+// console.log(`'${noSpace}'`);
+
+//! split() ---------------------------
+
+// const sentence = "I am a simple senten for learning js";
+
+// const words = sentence.split(" ");
+// console.log(words);
+
+// const a = sentence.split("a");
+// console.log(a);
+
+// const chars = sentence.split("");
+// console.log(chars);
+
+//! replace() ------------------------
+
+// const origin = "Salam, dunya! Salam, kosmos!";
+
+// const strNew1 = origin.replace("dunya", "ay");
+// console.log(strNew1);
+
+// const strNew2 = origin.replace(/Salam/g, "Sagol");
+// console.log(strNew2);
+
+//! repeat() ----------------------
+
+// const word = "|word|";
+// console.log(word.repeat(5));
+// console.log("Ha".repeat(10));
+// console.log("=".repeat(15));
+
+//! starsWith() -------------------
+
+// const docName = "document.pdf";
+
+// console.log(docName.startsWith("doc")); //* true
+// console.log(docName.startsWith("DOC")); //* false
+// console.log(docName.startsWith("file")); //* false
+
+//! endsWith ----------------------
+
+// const docName2 = "document.zip";
+
+// console.log(docName2.endsWith("pdf")); //* false
+// console.log(docName2.endsWith("zip")); //* true
+// console.log(docName2.endsWith(".zip")); //* true
+// console.log(docName2.endsWith(".ZIP")); //* false
