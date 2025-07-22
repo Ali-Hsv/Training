@@ -211,30 +211,63 @@
 
 //! Object.keys(), Object.values(), Object.entries() ----
 
-const product = {
-    name: "Phone",
-    mark: "Apple",
-    price: 200,
-    color: "black"
-}
+// const product = {
+//     name: "Phone",
+//     mark: "Apple",
+//     price: 200,
+//     color: "black"
+// }
 
-//1)
-const values = Object.values(product);
-console.log(values);
+// //1)
+// const values = Object.values(product);
+// console.log(values);
 
-//2)
-const keys = Object.keys(product);
-console.log(keys);
+// //2)
+// const keys = Object.keys(product);
+// console.log(keys);
 
-//3)
-const entries = Object.entries(product);
-console.log(entries);
+// //3)
+// const entries = Object.entries(product);
+// console.log(entries);
 
-console.log('-----------')
-keys.forEach(key => console.log(`Keys: ${key}`));
-console.log('-----------')
-values.forEach(vl => console.log(`Values: ${vl}`));
-console.log('-----------')
-entries.forEach(([key, val]) => {
-    console.log(`${key}: ${val}`);
-})
+// console.log('-----------')
+// keys.forEach(key => console.log(`Keys: ${key}`));
+// console.log('-----------')
+// values.forEach(vl => console.log(`Values: ${vl}`));
+// console.log('-----------')
+// entries.forEach(([key, val]) => {
+//     console.log(`${key}: ${val}`);
+// });
+
+//! Object.hasOwnProperty() ----------
+
+//* Object.hasOwnProperty() -> Object.prototype.hasOwnProperty() den acila biler 
+
+// const myObject = {
+//     a: 1,
+//     b: 2,
+// };
+
+// console.log(myObject.hasOwnProperty("a")); //* true
+// console.log(myObject.hasOwnProperty("b")); //* true
+// console.log(myObject.hasOwnProperty("c")); //* false
+// console.log('-----');
+// console.log('toString' in myObject); //* true
+// console.log(myObject.hasOwnProperty("toString")); //* false
+// console.log('-----');
+// for (let key in myObject){
+//     if(myObject.hasOwnProperty(key)){
+//         console.log(`Oz elementleri: ${key}: ${myObject[key]}`);
+//     }
+// }
+
+//! for...in --------------------------
+
+// const student = {
+//     id:  103,
+//     name: "Alisa",
+//     age: 17
+// };
+// for(let key in student){
+//     console.log(`key: ${key}, value: ${student[key]}`)
+// }
