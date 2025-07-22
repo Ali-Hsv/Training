@@ -139,3 +139,39 @@
 // console.log(docName2.endsWith("zip")); //* true
 // console.log(docName2.endsWith(".zip")); //* true
 // console.log(docName2.endsWith(".ZIP")); //* false
+
+//! Tasks ---------------------------
+
+//! -----Task_#1-----
+
+const productName = "   TV 55 dyum   ";
+console.log(`'${productName}' | '${productName.trim()}'`);
+
+let price = 12500;
+console.log(`TV Price: ${price}`);
+
+const doc = "image.png";
+console.log(doc.endsWith(".png"));
+
+//! -----Task_#2-----
+
+let str = "Shopping list: bread, milk, eggs, cheese";
+
+console.log(str.replace("bread", "cereals"));
+
+console.log(str.replace("Shopping list:", "").split(","));
+
+function generateStars(count){
+    console.log("*".repeat(count));
+};
+generateStars(15);
+
+//! -----Task_#3-----
+
+function censorWord(sentence, word){
+    let censor = "*".repeat(word.length);
+    let pattern = new RegExp(word, "gi");
+    console.log(sentence.replace(pattern, censor));
+}
+
+censorWord("My name is James. my favorite team is...", "my");
