@@ -16,7 +16,7 @@
 // console.log(parseFloat("px10.5")) //* NaN (setir ededle baslamir);
 // console.log(parseFloat("3.14e-2")) //* 0.0314 (eksponensial qeydləri idarə edir);
 
-//! Tasks ---------------------------
+//! Tasks_#1 ---------------------------
 
 // //! -----Task_#1-----
 // let a = "25 apples";
@@ -140,38 +140,101 @@
 // console.log(docName2.endsWith(".zip")); //* true
 // console.log(docName2.endsWith(".ZIP")); //* false
 
-//! Tasks ---------------------------
+//! Tasks_#2 ---------------------------
 
-//! -----Task_#1-----
+// //! -----Task_#1-----
 
-const productName = "   TV 55 dyum   ";
-console.log(`'${productName}' | '${productName.trim()}'`);
+// const productName = "   TV 55 dyum   ";
+// console.log(`'${productName}' | '${productName.trim()}'`);
 
-let price = 12500;
-console.log(`TV Price: ${price}`);
+// let price = 12500;
+// console.log(`TV Price: ${price}`);
 
-const doc = "image.png";
-console.log(doc.endsWith(".png"));
+// const doc = "image.png";
+// console.log(doc.endsWith(".png"));
 
-//! -----Task_#2-----
+// //! -----Task_#2-----
 
-let str = "Shopping list: bread, milk, eggs, cheese";
+// let str = "Shopping list: bread, milk, eggs, cheese";
 
-console.log(str.replace("bread", "cereals"));
+// console.log(str.replace("bread", "cereals"));
 
-console.log(str.replace("Shopping list:", "").split(","));
+// console.log(str.replace("Shopping list:", "").split(","));
 
-function generateStars(count){
-    console.log("*".repeat(count));
-};
-generateStars(15);
+// function generateStars(count){
+//     console.log("*".repeat(count));
+// };
+// generateStars(15);
 
-//! -----Task_#3-----
+// //! -----Task_#3-----
 
-function censorWord(sentence, word){
-    let censor = "*".repeat(word.length);
-    let pattern = new RegExp(word, "gi");
-    console.log(sentence.replace(pattern, censor));
+// function censorWord(sentence, word){
+//     let censor = "*".repeat(word.length);
+//     let pattern = new RegExp(word, "gi");
+//     console.log(sentence.replace(pattern, censor));
+// }
+
+// censorWord("My name is James. my favorite team is...", "my");
+
+//! in --------------------------------
+
+// const user = {
+//     name: "James",
+//     age: 23,
+// };
+
+// console.log("name" in user);     //* true
+// console.log("age" in user);      //* true
+// console.log("lastName" in user); //* false
+
+// console.log("toString" in user); //* true - (toString() metodu Object.prototype - dan geldiyi ucun sayilir);
+
+//! JSON ------------------------------
+
+// const persone = {
+//     firsName: "Ivan",
+//     lasrName: "Gregoriy",
+//     age: 23,
+//     isStudent: false,
+//     courses: ["Math", "History"]
+// };
+
+// const jsonString  = JSON.stringify(persone);
+// console.log(jsonString);
+// console.log(typeof  jsonString);
+
+// //todo ------------------------------------
+
+// const personeData = JSON.parse(jsonString);
+// console.log(personeData);
+// console.log(personeData.lasrName);
+
+//! Object.keys(), Object.values(), Object.entries() ----
+
+const product = {
+    name: "Phone",
+    mark: "Apple",
+    price: 200,
+    color: "black"
 }
 
-censorWord("My name is James. my favorite team is...", "my");
+//1)
+const values = Object.values(product);
+console.log(values);
+
+//2)
+const keys = Object.keys(product);
+console.log(keys);
+
+//3)
+const entries = Object.entries(product);
+console.log(entries);
+
+console.log('-----------')
+keys.forEach(key => console.log(`Keys: ${key}`));
+console.log('-----------')
+values.forEach(vl => console.log(`Values: ${vl}`));
+console.log('-----------')
+entries.forEach(([key, val]) => {
+    console.log(`${key}: ${val}`);
+})
