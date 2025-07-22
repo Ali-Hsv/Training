@@ -7,6 +7,7 @@
 // console.log(parseInt("10", 8)) //* 8 (10 - 8 li say sisteminde 8 dir);
 // console.log(parseInt("0xF", 16)) //* 15 (0xF - 16 li say sisteminde 15 dir);
 // console.log(parseInt("010"))   //* 10 (brauzerlerde 10 say sistemi goturduyune gore 10 olacaq);
+// console.log(parseInt("010"))   //* 10 (brauzerlerde 10 say sistemi goturduyune gore 10 olacaq);
 
 //! parseFloat()----------------------
 
@@ -271,3 +272,46 @@
 // for(let key in student){
 //     console.log(`key: ${key}, value: ${student[key]}`)
 // }
+
+//! Tasks_#3 ---------------------------
+
+//! -----Task_#1-----
+console.log('1)------------------');
+
+let jsObj = {
+    title: "THis is a title",
+    author: "Magamagoma Latotiu"
+};
+console.log("year" in jsObj);
+console.log(JSON.stringify(jsObj));
+
+//! -----Task_#2-----
+console.log('2)------------------');
+
+const productsJson = '[{"id":1,"name":"Laptop","price":1200},{"id":2,"name":"Mouse","price":25}]';
+
+const productOnj = JSON.parse(productsJson);
+
+console.log(Object.keys(productOnj[1]));
+console.log(Object.values(productOnj[1]));
+console.log(Object.entries(productOnj[1]));
+
+//! -----Task_#3-----
+console.log('3)------------------');
+
+const myCar = {
+  brand: "Tesla",
+  model: "Model 3",
+  year: 2023,
+  owner: { name: "John Doe" }
+};
+
+function logObjectProperties(obj){
+    for(let key in obj){
+        if(obj.hasOwnProperty(key)){
+            console.log(`${key}: ${obj[key]}`);
+        }
+    }
+}
+
+logObjectProperties(myCar);
