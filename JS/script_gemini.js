@@ -275,43 +275,65 @@
 
 //! Tasks_#3 ---------------------------
 
-//! -----Task_#1-----
-console.log('1)------------------');
+// //! -----Task_#1-----
+// console.log('1)------------------');
 
-let jsObj = {
-    title: "THis is a title",
-    author: "Magamagoma Latotiu"
-};
-console.log("year" in jsObj);
-console.log(JSON.stringify(jsObj));
+// let jsObj = {
+//     title: "THis is a title",
+//     author: "Magamagoma Latotiu"
+// };
+// console.log("year" in jsObj);
+// console.log(JSON.stringify(jsObj));
 
-//! -----Task_#2-----
-console.log('2)------------------');
+// //! -----Task_#2-----
+// console.log('2)------------------');
 
-const productsJson = '[{"id":1,"name":"Laptop","price":1200},{"id":2,"name":"Mouse","price":25}]';
+// const productsJson = '[{"id":1,"name":"Laptop","price":1200},{"id":2,"name":"Mouse","price":25}]';
 
-const productOnj = JSON.parse(productsJson);
+// const productOnj = JSON.parse(productsJson);
 
-console.log(Object.keys(productOnj[1]));
-console.log(Object.values(productOnj[1]));
-console.log(Object.entries(productOnj[1]));
+// console.log(Object.keys(productOnj[1]));
+// console.log(Object.values(productOnj[1]));
+// console.log(Object.entries(productOnj[1]));
 
-//! -----Task_#3-----
-console.log('3)------------------');
+// //! -----Task_#3-----
+// console.log('3)------------------');
 
-const myCar = {
-  brand: "Tesla",
-  model: "Model 3",
-  year: 2023,
-  owner: { name: "John Doe" }
-};
+// const myCar = {
+//   brand: "Tesla",
+//   model: "Model 3",
+//   year: 2023,
+//   owner: { name: "John Doe" }
+// };
 
-function logObjectProperties(obj){
-    for(let key in obj){
-        if(obj.hasOwnProperty(key)){
-            console.log(`${key}: ${obj[key]}`);
-        }
-    }
+// function logObjectProperties(obj){
+//     for(let key in obj){
+//         if(obj.hasOwnProperty(key)){
+//             console.log(`${key}: ${obj[key]}`);
+//         }
+//     }
+// }
+
+// logObjectProperties(myCar);
+
+//! new ---------------------------
+
+function Car(mark, year, isItNew, price){
+    this.mark = mark,
+    this.year = year,
+    this.isItNew = isItNew,
+    this.price = price
 }
 
-logObjectProperties(myCar);
+Car.prototype.info = function(){
+    console.log(`Your car is ${this.mark}, maded in ${this.year}. Price: ${this.price}$`);
+}
+
+const porshe = new Car("Porshe", 2020, false, 25000);
+const bmw = new Car("BMW", 2017, false, 11000);
+const bugatti = new Car("Bugatti", 2024, true, 3000000);
+
+console.log(porshe, bmw, bugatti);
+
+porshe.info();
+bugatti.info();
