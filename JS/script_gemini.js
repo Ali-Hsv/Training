@@ -318,22 +318,140 @@
 
 //! new ---------------------------
 
-function Car(mark, year, isItNew, price){
-    this.mark = mark,
-    this.year = year,
-    this.isItNew = isItNew,
-    this.price = price
+// function Car(mark, year, isItNew, price){
+//     this.mark = mark,
+//     this.year = year,
+//     this.isItNew = isItNew,
+//     this.price = price
+// }
+
+// Car.prototype.info = function(){
+//     console.log(`Your car is ${this.mark}, maded in ${this.year}. Price: ${this.price}$`);
+// }
+
+// const porshe = new Car("Porshe", 2020, false, 25000);
+// const bmw = new Car("BMW", 2017, false, 11000);
+// const bugatti = new Car("Bugatti", 2024, true, 3000000);
+
+// console.log(porshe, bmw, bugatti);
+
+// porshe.info();
+// bugatti.info();
+
+//! new Map() ------------------------
+
+// const userRoles = new Map();
+// console.log('User Roles size:', userRoles.size); //* 0
+
+// userRoles.set("admin", "Dadas Bagirof");
+// userRoles.set("editor", "Mamoli Mosa");
+// userRoles.set("viewer", "Sogna Morano");
+// console.log('User Roles size:', userRoles.size) //* 3
+
+// console.log('Administrator:', userRoles.get('admin'));
+// console.log('Dev', userRoles.get('developer')); //* undefined
+
+// console.log(userRoles.has('editor')); //* true
+// console.log(userRoles.has('user')); //* falce
+
+// //* key also can be a bject
+// const user1 = {id: 1};
+// const user2 = {id: 2};
+// const UserPP = new Map();
+// UserPP.set(user1, ["nafola", "andola"]);
+// UserPP.set(user2, ["Nombla",]);
+
+// console.log(UserPP.get(user1));
+
+//! some() ----------------------------
+
+// const num = [1, 5, 8, 10, 15];
+
+// const hasEvenNumber = num.some(numbers => numbers % 2 === 0);
+// console.log("2 - ye bolunen ededler varmı? = " + hasEvenNumber);
+
+// const hasNumberGreaterThan20 = num.some(number => number > 20);
+// console.log("20 den boywk eded varmi? = " + hasNumberGreaterThan20);
+
+// const users = [
+//     {id:1, active: false},
+//     {id:2, active: true},
+//     {id:3, active: false},
+// ];
+
+// const hasActiveUser = users.some(user => user.active);
+// console.log(hasActiveUser);
+
+// const hasId4 = users.some(user => user.id == 4);
+// console.log(hasId4);
+
+//! sort() -----------------------------
+
+// const fruits = ["banana", "apple", "mango"];
+// fruits.sort();
+// console.log(fruits);
+
+// const numbers = [10, 5, 2, 4];
+// numbers.sort();
+// console.log(numbers);
+
+// numbers.sort((a,b) => a - b);
+// console.log(numbers);
+
+// numbers.sort((a,b) => b - a);
+// console.log(numbers);
+
+// const products = [
+//     {name: "Laptop", price:1200},
+//     {name: "Mause", price:100},
+//     {name: "Keyboard", price:600},
+// ];
+// products.sort((a, b) => a.price - b.price);
+// console.log(products)
+
+// products.sort((a, b) => {
+//     const nameA = a.name.toLowerCase();
+//     const nameB = b.name.toLowerCase();
+//     if(nameA < nameB) return -1;
+//     if(nameA > nameB) return 1;
+//     return 0;
+// });
+// console.log(products);
+
+//! Tasks_#3 ---------------------------
+
+// //! -----Task_#1-----
+temperatures = [22, 25, 18, 20, 30];
+console.log(`Есть ли температура выше 28? - ${temperatures.some(temp => temp > 28)}`);
+console.log(temperatures.sort((a,b) => b - a));
+
+// //! -----Task_#2-----
+const orders = [
+  { id: 1, amount: 150 },
+  { id: 2, amount: 50 },
+  { id: 3, amount: 200 },
+  { id: 4, amount: 100 }
+];
+
+console.log(`Ob amount - ${orders.reduce((red, ord) => red + ord.amount, 0)}`);
+
+// //! -----Task_#3-----
+const studentList = [
+  { name: "Анна", score: 95 },
+  { name: "Борис", score: 88 },
+  { name: "Виктор", score: 72 },
+  { name: "Галина", score: 99 },
+  { name: "Дмитрий", score: 85 }
+];
+
+function getTopStudents(students, num) {
+    students.sort((a,b) => b.score - a.score);
+    const arr = [];
+    for(let i = 0; i < num; i++){
+        console.log(i)
+        arr.push(students[i]);
+    }
+    console.log(arr);
 }
 
-Car.prototype.info = function(){
-    console.log(`Your car is ${this.mark}, maded in ${this.year}. Price: ${this.price}$`);
-}
-
-const porshe = new Car("Porshe", 2020, false, 25000);
-const bmw = new Car("BMW", 2017, false, 11000);
-const bugatti = new Car("Bugatti", 2024, true, 3000000);
-
-console.log(porshe, bmw, bugatti);
-
-porshe.info();
-bugatti.info();
+getTopStudents(studentList, 2);
