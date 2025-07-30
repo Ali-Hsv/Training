@@ -498,28 +498,68 @@
 
 //! Tasks_#5 ---------------------------
 
-//! -----Task_#1-----
-const weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница"];
-for(const day of weekdays){
-    console.log(`Сегодня: ${day}`);
-}
+// //! -----Task_#1-----
+// const weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница"];
+// for(const day of weekdays){
+//     console.log(`Сегодня: ${day}`);
+// }
 
-//! -----Task_#2-----
-const dataString = "10,25,5,30,15";
-const dataArr = dataString.split(",");
-for(const data of dataArr){
-    if(data > 20){
-        console.log(data);
-    }
-}
+// //! -----Task_#2-----
+// const dataString = "10,25,5,30,15";
+// const dataArr = dataString.split(",");
+// for(const data of dataArr){
+//     if(data > 20){
+//         console.log(data);
+//     }
+// }
 
-//! -----Task_#3-----
-function filterUniqueWords(txt){
-    const obText = txt.toLowerCase().split(/[ ,.!?]+/g);
-    const uniqueNum = new Set(obText);
-    console.log(uniqueNum)
-    for(const num of uniqueNum){
-        console.log(num)
-    }
-};
-filterUniqueWords("Привет, мир! Привет всем.");
+// //! -----Task_#3-----
+// function filterUniqueWords(txt){
+//     const obText = txt.toLowerCase().split(/[ ,.!?]+/g);
+//     const uniqueNum = new Set(obText);
+//     console.log(uniqueNum)
+//     for(const num of uniqueNum){
+//         console.log(num)
+//     }
+// };
+// filterUniqueWords("Привет, мир! Привет всем.");
+
+//! Date, new Date()-------------------
+
+const now = new Date();
+console.log(now);
+
+const epochStart = new Date(0);
+console.log(epochStart);
+
+const oneDayInMs = 24  * 60 * 60 * 1000;
+const tomorrow = new Date(now.getTime() + oneDayInMs);
+console.log(tomorrow);
+
+const specificDateString = new Date("2023-10-26T10:30:00Z");
+console.log(specificDateString);
+
+const lessReliableDateString = new Date("April 21, 2025 12:12:00");
+console.log(lessReliableDateString);
+
+//* new Date(year, monthIndex (0 - 11), day (1-31), hours (0-23), minutes (0-59), seconds (0-59), milliseconds (0-999));
+const dataSettings = new Date(2023, 2, 1, 23, 12);
+console.log(dataSettings);
+
+const today = new Date();
+console.log("Full Year", today.getFullYear());
+console.log("Month (index 0 - 11)", today.getMonth());
+console.log("Month Day", today.getDate());
+console.log("Day of week (0 - 6)", today.getDay());
+console.log("Hours", today.getHours());
+console.log("Minutes", today.getMinutes());
+console.log("Milliseconds", today.getMilliseconds());
+
+const futureDate = new Date();
+
+futureDate.setDate(1); 
+futureDate.setFullYear(2026); 
+futureDate.setMonth(0); 
+futureDate.setHours(9, 0, 0); 
+console.log('Future date: ', futureDate);
+ 
