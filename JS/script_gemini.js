@@ -418,40 +418,108 @@
 // });
 // console.log(products);
 
-//! Tasks_#3 ---------------------------
+//! Tasks_#4 ---------------------------
 
 // //! -----Task_#1-----
-temperatures = [22, 25, 18, 20, 30];
-console.log(`Есть ли температура выше 28? - ${temperatures.some(temp => temp > 28)}`);
-console.log(temperatures.sort((a,b) => b - a));
+// temperatures = [22, 25, 18, 20, 30];
+// console.log(`Есть ли температура выше 28? - ${temperatures.some(temp => temp > 28)}`);
+// console.log(temperatures.sort((a,b) => b - a));
 
 // //! -----Task_#2-----
-const orders = [
-  { id: 1, amount: 150 },
-  { id: 2, amount: 50 },
-  { id: 3, amount: 200 },
-  { id: 4, amount: 100 }
-];
+// const orders = [
+//   { id: 1, amount: 150 },
+//   { id: 2, amount: 50 },
+//   { id: 3, amount: 200 },
+//   { id: 4, amount: 100 }
+// ];
 
-console.log(`Ob amount - ${orders.reduce((red, ord) => red + ord.amount, 0)}`);
+// console.log(`Ob amount - ${orders.reduce((red, ord) => red + ord.amount, 0)}`);
 
 // //! -----Task_#3-----
-const studentList = [
-  { name: "Анна", score: 95 },
-  { name: "Борис", score: 88 },
-  { name: "Виктор", score: 72 },
-  { name: "Галина", score: 99 },
-  { name: "Дмитрий", score: 85 }
-];
+// const studentList = [
+//   { name: "Анна", score: 95 },
+//   { name: "Борис", score: 88 },
+//   { name: "Виктор", score: 72 },
+//   { name: "Галина", score: 99 },
+//   { name: "Дмитрий", score: 85 }
+// ];
 
-function getTopStudents(students, num) {
-    students.sort((a,b) => b.score - a.score);
-    const arr = [];
-    for(let i = 0; i < num; i++){
-        console.log(i)
-        arr.push(students[i]);
-    }
-    console.log(arr);
+// function getTopStudents(students, num) {
+//     students.sort((a,b) => b.score - a.score);
+//     const arr = [];
+//     for(let i = 0; i < num; i++){
+//         console.log(i)
+//         arr.push(students[i]);
+//     }
+//     console.log(arr);
+// }
+
+// getTopStudents(studentList, 2);
+//todo <--->
+// function getTopStudents(students, num) {
+//     // Создаем копию массива перед сортировкой, чтобы не изменять исходный studentList
+//     // Это хорошая практика, чтобы избежать "побочных эффектов"
+//     const sortedStudents = [...students].sort((a,b) => b.score - a.score);
+
+//     // Используем slice для получения нужного количества элементов
+//     const topStudents = sortedStudents.slice(0, num);
+
+//     return topStudents; // Возвращаем результат, а не просто выводим в консоль внутри функции
+// }
+
+// console.log(getTopStudents(studentList, 2));
+// console.log(getTopStudents(studentList, 3));
+
+//! for...of --------------------------
+
+// const fruits = ["banana", "apple", "mango"];
+// for(const fruit of fruits){
+//     console.log(fruit)
+// }
+
+// const greeting = "Hellow";
+// for(const char of greeting){
+//     console.log(char);
+// }
+
+// const uniqurNumbers = new Set ([10, 20, 20, 30, 10]);
+// for(const uniq of uniqurNumbers){
+//     console.log(uniq);
+// }
+
+// const userScores = new Map();
+// userScores.set("Alice", 90);
+// userScores.set("Alfedov", 75);
+// userScores.set("Zagviele", 80);
+
+// for(const [name, score] of userScores){
+//     console.log(`Name: ${name}, Score: ${score} - point`);
+// }
+
+//! Tasks_#5 ---------------------------
+
+//! -----Task_#1-----
+const weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница"];
+for(const day of weekdays){
+    console.log(`Сегодня: ${day}`);
 }
 
-getTopStudents(studentList, 2);
+//! -----Task_#2-----
+const dataString = "10,25,5,30,15";
+const dataArr = dataString.split(",");
+for(const data of dataArr){
+    if(data > 20){
+        console.log(data);
+    }
+}
+
+//! -----Task_#3-----
+function filterUniqueWords(txt){
+    const obText = txt.toLowerCase().split(/[ ,.!?]+/g);
+    const uniqueNum = new Set(obText);
+    console.log(uniqueNum)
+    for(const num of uniqueNum){
+        console.log(num)
+    }
+};
+filterUniqueWords("Привет, мир! Привет всем.");
