@@ -610,36 +610,200 @@
 
 //! ?? --------------------------------
 
-const userWithoutCity = {
-  name: "Джон",
-  details: {
-    address: {
-    }
-  }
+// const userWithoutCity = {
+//   name: "Джон",
+//   details: {
+//     address: {
+//     }
+//   }
+// };
+
+// const userWithEmptyCity = {
+//   name: "Сара",
+//   details: {
+//     address: {
+//       city: "" 
+//     }
+//   }
+// };
+
+// const userWithNoDetails = {
+//   name: "Питер"
+// };
+
+// //No ??
+// console.log(userWithoutCity?.details?.address?.city); //* undefined
+// console.log(userWithEmptyCity?.details?.address?.city); //* ""
+
+// //With ??
+
+// console.log(userWithoutCity?.details?.address?.city ?? "City not found"); //* City not found
+// console.log(userWithEmptyCity?.details?.address?.city ?? "City not found"); //* ""
+// console.log(userWithNoDetails?.details?.address?.city ?? "City not found"); //* City not found
+
+// // But be careful: || will also work on 0, false, null, undefined, ""
+// console.log(userWithEmptyCity?.details?.address?.city || "City not found") //* City not found
+
+
+//! ... -------------------------------
+
+// //todo: ARRAY - 
+// //* Arraylarin ustu kopyalanmasi
+
+// const originalArray = [1,2,3];
+// const copiedArray = [...originalArray];
+
+// console.log(copiedArray);
+// console.log(copiedArray == originalArray); //falce 
+// console.log(copiedArray === originalArray); //falce (yaddasda bunlar tamamile ferqli array - lardir);
+
+// copiedArray.push(4);
+// console.log(copiedArray);
+// console.log(originalArray);
+
+// //* Arraylarin birlesmesi
+
+// const arr1 = [1,2];
+// const arr2 = [4,5];
+
+// const combinedArray = [...arr1, ...arr2]; // [1,2,4,5]; 
+
+// //* Arraya element elave edilme imkani
+
+// const moreElement = [0, ...arr1, 3, ...arr2, 6,  7];
+// console.log(moreElement);
+
+// const fruits = ["apple", "banana"];
+// const newFruits = ["mango", ...fruits, "pineapple"];
+// console.log(newFruits);
+
+// //* Elaveler - 
+
+// const str =  "Hello";
+// const chars =  [...str];
+// console.log(chars); // ['H', 'e', 'l', 'l', 'o'];
+
+// const mySet = new Set([1, 2, 2, 3]);
+// const setToArray = [...mySet];
+// console.log(setToArray); // [1, 2, 3];
+
+//todo: OBJECT -
+//* Object - lerin ustu kopyalanmasi
+
+// const originalObj = {a: 1, b: 2};
+// const coppiedObj = {...originalObj};
+
+// console.log(coppiedObj);
+// console.log(coppiedObj === originalObj); // falce
+
+// coppiedObj.c = 3;
+// console.log(coppiedObj);
+// console.log(originalObj);
+
+//* Object - leri birlesdirir
+
+// const obj1 = {a: 1, b: 2};
+// const obj2 = {c: 3, d: 4};
+// const combinedObj = {...obj1, ...obj2};
+// console.log(combinedObj);
+
+// const user = {name: "Alice", age: 31};
+// const updates = {age: 23, city: "New York"};
+// const updatedUser = {...user, ...updates};
+// console.log(updatedUser); // {name: 'Alice', age: 23, city: 'New York'};
+
+//! Destructuring --------------------- 
+
+//todo: Array - 
+
+// const color = ["red", "green", "orange", "purple"];
+// const [firstColor, secondColor, thirdColor] = color;
+
+// console.log(firstColor);
+// console.log(secondColor);
+
+// const [, , , lastColor] = color;
+// console.log(lastColor);
+
+// const [primary, ...remainingColor] = color;
+// console.log(primary); 
+// console.log(...remainingColor); 
+
+//todo: Object - 
+
+// const user  = {
+//     name: "Ali",
+//     age:  32,
+//     city: "Moskow"
+// };
+
+// const  {name, age} = user;
+// console.log(name);
+// console.log(age);
+
+// const {name: FullName, city: homeCity}  = user;
+// console.log(FullName);
+// console.log(homeCity);
+
+// const user1 = {
+//     id: 1,
+//     info: {
+//         email: "user1@gmail.com",
+//         adress: {
+//             street: "Main St"
+//         }
+//     }
+// };
+// const {info: { adress: { street } } } = user;
+// console.log(street);
+
+//! Rest Parameters -------------------
+
+// function sumAll(...numbers){
+//     console.log(numbers);
+//     return numbers.reduce((acc, current) => acc + current, 0);
+// }
+
+// console.log(sumAll(1, 2, 3));
+// console.log(sumAll(10, 20, 30, 40));
+// console.log(sumAll()); // 0
+
+// function greet(greeting, ...names){
+//     return `${greeting}, ${names.join(' and ')}!`
+// }
+
+// console.log(greet("Hellow", "Ali", "Charlie", "Bob"));
+
+//! Tasks_#6 ---------------------------
+
+// //! -----Task_#1-----
+const fruits = ['яблоко', 'банан'];
+const berries = ['клубника', 'малина'];
+const allFruits = [...fruits, ...berries];
+console.log(allFruits);
+
+const persone = {name: "Vladim", age: 25};
+const updatePersone = {...persone, city: "Minsk"};
+console.log(updatePersone);
+
+// //! -----Task_#2-----
+const data = [10, 20, 30, 40, 50];
+const [firstData, ...otherData] = data;
+const [, , , , lastData] = data;
+console.log(firstData, lastData);
+
+const settings = {theme: "dark", fontSize: 12, language: "en"};
+const {theme, fontSize, language, notifications = true} = settings;
+console.log(theme);
+console.log(lang);
+console.log(notifications);
+
+// //! -----Task_#3-----
+
+function calculateAverage(...numbers){
+    const obNums = numbers.reduce((acc, current) => acc + current, 0);
+    const average = obNums / numbers.length;
+    return `average ${numbers} - is equale ${average}`; 
 };
 
-const userWithEmptyCity = {
-  name: "Сара",
-  details: {
-    address: {
-      city: "" 
-    }
-  }
-};
-
-const userWithNoDetails = {
-  name: "Питер"
-};
-
-//No ??
-console.log(userWithoutCity?.details?.address?.city); //* undefined
-console.log(userWithEmptyCity?.details?.address?.city); //* ""
-
-//With ??
-
-console.log(userWithoutCity?.details?.address?.city ?? "City not found"); //* City not found
-console.log(userWithEmptyCity?.details?.address?.city ?? "City not found"); //* ""
-console.log(userWithNoDetails?.details?.address?.city ?? "City not found"); //* City not found
-
-// But be careful: || will also work on 0, false, null, undefined, ""
-console.log(userWithEmptyCity?.details?.address?.city || "City not found") //* City not found
+console.log(calculateAverage(10, 20, 30, 40, 50));
