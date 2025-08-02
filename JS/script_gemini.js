@@ -526,40 +526,120 @@
 
 //! Date, new Date()-------------------
 
-const now = new Date();
-console.log(now);
+// const now = new Date();
+// console.log(now);
 
-const epochStart = new Date(0);
-console.log(epochStart);
+// const epochStart = new Date(0);
+// console.log(epochStart);
 
-const oneDayInMs = 24  * 60 * 60 * 1000;
-const tomorrow = new Date(now.getTime() + oneDayInMs);
-console.log(tomorrow);
+// const oneDayInMs = 24  * 60 * 60 * 1000;
+// const tomorrow = new Date(now.getTime() + oneDayInMs);
+// console.log(tomorrow);
 
-const specificDateString = new Date("2023-10-26T10:30:00Z");
-console.log(specificDateString);
+// const specificDateString = new Date("2023-10-26T10:30:00Z");
+// console.log(specificDateString);
 
-const lessReliableDateString = new Date("April 21, 2025 12:12:00");
-console.log(lessReliableDateString);
+// const lessReliableDateString = new Date("April 21, 2025 12:12:00");
+// console.log(lessReliableDateString);
 
-//* new Date(year, monthIndex (0 - 11), day (1-31), hours (0-23), minutes (0-59), seconds (0-59), milliseconds (0-999));
-const dataSettings = new Date(2023, 2, 1, 23, 12);
-console.log(dataSettings);
+// //* new Date(year, monthIndex (0 - 11), day (1-31), hours (0-23), minutes (0-59), seconds (0-59), milliseconds (0-999));
+// const dataSettings = new Date(2023, 2, 1, 23, 12);
+// console.log(dataSettings);
 
-const today = new Date();
-console.log("Full Year", today.getFullYear());
-console.log("Month (index 0 - 11)", today.getMonth());
-console.log("Month Day", today.getDate());
-console.log("Day of week (0 - 6)", today.getDay());
-console.log("Hours", today.getHours());
-console.log("Minutes", today.getMinutes());
-console.log("Milliseconds", today.getMilliseconds());
+// const today = new Date();
+// console.log("Full Year", today.getFullYear());
+// console.log("Month (index 0 - 11)", today.getMonth());
+// console.log("Month Day", today.getDate());
+// console.log("Day of week (0 - 6)", today.getDay());
+// console.log("Hours", today.getHours());
+// console.log("Minutes", today.getMinutes());
+// console.log("Milliseconds", today.getMilliseconds());
 
-const futureDate = new Date();
+// const futureDate = new Date();
 
-futureDate.setDate(1); 
-futureDate.setFullYear(2026); 
-futureDate.setMonth(0); 
-futureDate.setHours(9, 0, 0); 
-console.log('Future date: ', futureDate);
- 
+// futureDate.setDate(1); 
+// futureDate.setFullYear(2026); 
+// futureDate.setMonth(0); 
+// futureDate.setHours(9, 0, 0); 
+// console.log('Future date: ', futureDate);
+
+//! ?. --------------------------------
+
+// const user1 = {
+//     name: "Alice",
+//     age: 52,
+//     details: {
+//         adress: {
+//             city: "New York"
+//         },
+//         getDetails: () => "I love Monkeys"
+//     }
+// }
+
+// const user2 = {
+//     name: "Steve",
+//     age: 52
+// }
+
+// const user3 = {
+//     name: "Mike",
+//     age: 25,
+//     details: {
+//         adress: {
+//             city: "Moskow"
+//         }
+//     }
+// }
+
+// console.log("--- Object ---");
+// console.log(user1.details?.adress?.city);
+// console.log(user2.details?.adress?.city);
+// console.log(user3.details?.zipCode);
+
+// console.log("\n--- Array ---");
+// const color = ['red', 'green'];
+// console.log(color?.[0]);
+// console.log(color?.[2]);
+// const emptyArray = null;
+// console.log(emptyArray?.[0]);
+
+// console.log("\n--- Metods ---");
+// console.log(user1?.details?.getDetails());
+// console.log(user2?.details?.getDetails());
+// console.log(user3?.details?.getDetails());
+
+//! ?? --------------------------------
+
+const userWithoutCity = {
+  name: "Джон",
+  details: {
+    address: {
+    }
+  }
+};
+
+const userWithEmptyCity = {
+  name: "Сара",
+  details: {
+    address: {
+      city: "" 
+    }
+  }
+};
+
+const userWithNoDetails = {
+  name: "Питер"
+};
+
+//No ??
+console.log(userWithoutCity?.details?.address?.city); //* undefined
+console.log(userWithEmptyCity?.details?.address?.city); //* ""
+
+//With ??
+
+console.log(userWithoutCity?.details?.address?.city ?? "City not found"); //* City not found
+console.log(userWithEmptyCity?.details?.address?.city ?? "City not found"); //* ""
+console.log(userWithNoDetails?.details?.address?.city ?? "City not found"); //* City not found
+
+// But be careful: || will also work on 0, false, null, undefined, ""
+console.log(userWithEmptyCity?.details?.address?.city || "City not found") //* City not found
