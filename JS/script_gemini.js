@@ -810,39 +810,243 @@
 
 //! promise ---------------------------
 
-function fetchData() {
+// function fetchData() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const success = true;
+
+//             if(success){
+//                 resolve({data: "This is dowload datas"});
+//             }
+//             else{
+//                 reject(new Error("Datas can't download successfuly :("));
+//             }
+//         }, 2000);
+//     }); 
+// };
+
+// console.log("Start Downloading Process...");
+
+// fetchData()
+//     .then(response => {
+//         // Promice ugurla başa çatdı (resolve);
+//         console.log(`Datas download successfuly! ${response.data}`);
+//         return "Processed data";
+//     })
+//     .then(processedData => {
+//         // Bu blok evvleki then - den sonra ortaya cixan deyisenle isleyir
+//         console.log("Further processing", processedData);
+//     })
+//     .catch(error => {
+//         console.error("Find error:", error.message);
+//     })
+//     .finally( () => {
+//         // Bu blok is bitdikden sonra cavabdan asili olmauaraq ise dusecek
+//         console.log("Block is done");
+//     });
+
+// console.log("Kod fechData - ni cagirdiqdan sonra helede oz funksionalligini davam edir");
+
+//! async/await -----------------------
+
+// function fetchData() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const success = false;
+
+//             if(success){
+//                 resolve({data: "This is dowload datas"});
+//             }
+//             else{
+//                 reject(new Error("Datas can't download successfuly :("));
+//             }
+//         }, 2000);
+//     }); 
+// };
+
+// async function getAndProtectData() {
+//     console.log("Start loading data with async/await...");
+
+//     try{
+//         const response = await fetchData();
+//         console.log(`Datas download successfuly! ${response.data}`);
+
+//         const processedData = "Additional processing" + response.data
+//         console.log("Further processing, " + processedData);
+//         return processedData         
+//     }
+//     catch (error){
+//         console.error("Find error: " + error.message);
+//         throw error; //onu atiriq ki gelecekde istifade ede bilek
+//     }
+//     finally{
+//         console.log("The getAndProcessData function is completed (finally block).");
+//     }
+// };
+
+// getAndProtectData()
+//     .then(finalResult => {
+//         if(finalResult){
+//             console.log("The final result of the async function: ", finalResult);
+//         }
+//     })
+//     .catch(err => {
+//         console.error("An error caught when calling an async function: ", err.message);
+//     });
+
+// console.log("The code continues to execute (non-blocking) after calling getAndProcessData.");
+
+//! Tasks_#7 ---------------------------
+
+//! -----Task_#1-----
+// function sayHi(){
+//     return new Promise((resolve, reject) =>{
+//         const promiceVal = true;
+//         if(promiceVal){
+//             resolve({data: "Hi, im promice!"});
+//         }
+//         else{
+//             reject(new Error("Datas can't download successfuly :("));
+//         }
+//     });
+// }
+
+// //*----------------------------------
+// sayHi()
+//     .then(response => {
+//         console.log(response.data);
+//     })
+//     .catch(err => {
+//         console.error(err.message)
+//     });
+// //*----------------------------------
+
+// async function greetAsync(){
+//     try{
+//         const responce = await sayHi();
+//         console.log("Nice u can say Hi! - " + responce.data);
+
+//         const processedHi = "Oh u can also processed your Hi! - " + responce.data;
+//         console.log(processedHi);
+
+//         return processedHi;
+//     }
+//     catch (error){
+//         console.error("Find error in your Hi - " + error.message);
+//         throw error;
+//     }
+//     finally{
+//         console.log("Do you can say hi?");
+//     }
+// }
+
+// greetAsync()
+//     .then(finalResult => {
+//         if(finalResult){
+//             console.log("The final result of the async function: " + finalResult);
+//         }
+//     })
+//     .catch(err => {
+//         console.error("No u find error(  ->" + err.message);
+//     });
+
+// console.log("U can see this code is async");
+
+//! -----Task_#2-----
+// function fetchUserData(userID){
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if(userID === 1){
+//             resolve({id: 1, name: "Alice", email: "alice@gmail.com"});
+//             } 
+//             else if(userID === 2){
+//                 resolve({id: 2, name: "Bob", email: "bob@gmail.com"});
+//             }
+//             else{
+//                 reject(new Error(`User ID - ${userID} Not Found!`));
+//             }
+//         }, 2000);
+//     });
+// }
+
+// async function displayUser(id) {
+//     try{
+//         const personData = await fetchUserData(id);
+//         console.log(`Persone Name - ${personData.name} With email - ${personData.email}`);
+
+//         personData.password = "123";
+//         console.log(`Persone Password - ${personData.password}`);
+
+//         return personData;
+//     }
+//     catch(error){
+//         console.error(`Ops! U got error - ${error.message}`);
+//         throw error;
+//     }
+//     finally{
+//         console.log("This is user data");
+//     }
+// }
+
+// displayUser(1)
+//     .then(result => {
+//         if(result){
+//             console.log(`This is result - ${result}`);
+//         }
+//     })
+//     .catch(err => {
+//         console.error(`Thomesing is wrong - ${err.message}`);
+//     });
+
+// console.log(`Find your user!`);
+
+//! -----Task_#3-----
+
+function simulationLoad(dataName, delay, shouldFail = false){
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const success = true;
-
-            if(success){
-                resolve({data: "This is dowload datas"});
+            if(shouldFail){
+                reject(new Error(`Ops! U got error`));
+            }else{
+                resolve(`User - ${dataName.name}, age - ${dataName.age}, gmail - ${dataName.gmail}`);
             }
-            else{
-                reject(new Error("Datas can't download successfuly :("));
-            }
-        }, 2000);
-    }); 
+        }, delay);
+    });
 };
 
-console.log("Start Downloading Process...");
+async function fetchSequentialData(data, data2) {
+    try{
+        const promiceData = await simulationLoad(data.dataName, data.delay, data.shouldFail);
+        console.log(promiceData);
+        const promiceData2 = await simulationLoad(data2.dataName, data2.delay, data2.shouldFail);
+        console.log(promiceData2);
+        console.log(`All data has been successfully uploaded: ${promiceData} and ${promiceData2}`);
+    }
+    catch (error){
+        console.log(error.message);
+        throw error;
+    }
+}
 
-fetchData()
-    .then(response => {
-        // Promice ugurla başa çatdı (resolve);
-        console.log(`Datas download successfuly! ${response.data}`);
-        return "Processed data";
-    })
-    .then(processedData => {
-        // Bu blok evvleki then - den sonra ortaya cixan deyisenle isleyir
-        console.log("Further processing", processedData);
-    })
-    .catch(error => {
-        console.error("Find error:", error.message);
-    })
-    .finally( () => {
-        // Bu blok is bitdikden sonra cavabdan asili olmauaraq ise dusecek
-        console.log("Block is done");
-    });
+const userData = {
+    dataName: {
+        name: "Alice",
+        age: 23,
+        gmail: "alice@gmail.com"
+    },
+    delay: 1500,
+}
 
-console.log("Kod fechData - ni cagirdiqdan sonra helede oz funksionalligini davam edir");
+
+const userData2 = {
+    dataName: {
+        name: "Bob",
+        age: 25,
+        gmail: "bob@gmail.com"
+    },
+    delay: 1000,
+    shouldFail: false,
+}
+
+fetchSequentialData(userData, userData2);
+console.log(`Find your user!`);
