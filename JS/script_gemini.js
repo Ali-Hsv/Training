@@ -562,7 +562,7 @@
 // futureDate.setMonth(0); 
 // futureDate.setHours(9, 0, 0); 
 // console.log('Future date: ', futureDate);
-
+ 
 //! ?. --------------------------------
 
 // const user1 = {
@@ -777,33 +777,72 @@
 //! Tasks_#6 ---------------------------
 
 // //! -----Task_#1-----
-const fruits = ['яблоко', 'банан'];
-const berries = ['клубника', 'малина'];
-const allFruits = [...fruits, ...berries];
-console.log(allFruits);
+// const fruits = ['яблоко', 'банан'];
+// const berries = ['клубника', 'малина'];
+// const allFruits = [...fruits, ...berries];
+// console.log(allFruits);
 
-const persone = {name: "Vladim", age: 25};
-const updatePersone = {...persone, city: "Minsk"};
-console.log(updatePersone);
+// const persone = {name: "Vladim", age: 25};
+// const updatePersone = {...persone, city: "Minsk"};
+// console.log(updatePersone);
 
 // //! -----Task_#2-----
-const data = [10, 20, 30, 40, 50];
-const [firstData, ...otherData] = data;
-const [, , , , lastData] = data;
-console.log(firstData, lastData);
+// const data = [10, 20, 30, 40, 50];
+// const [firstData, ...otherData] = data;
+// const [, , , , lastData] = data;
+// console.log(firstData, lastData);
 
-const settings = {theme: "dark", fontSize: 12, language: "en"};
-const {theme, fontSize, language, notifications = true} = settings;
-console.log(theme);
-console.log(lang);
-console.log(notifications);
+// const settings = {theme: "dark", fontSize: 12, language: "en"};
+// const {theme, fontSize, language, notifications = true} = settings;
+// console.log(theme);
+// console.log(lang);
+// console.log(notifications);
 
 // //! -----Task_#3-----
 
-function calculateAverage(...numbers){
-    const obNums = numbers.reduce((acc, current) => acc + current, 0);
-    const average = obNums / numbers.length;
-    return `average ${numbers} - is equale ${average}`; 
+// function calculateAverage(...numbers){
+//     const obNums = numbers.reduce((acc, current) => acc + current, 0);
+//     const average = obNums / numbers.length;
+//     return `average ${numbers} - is equale ${average}`; 
+// };
+
+// console.log(calculateAverage(10, 20, 30, 40, 50));
+
+//! promise ---------------------------
+
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const success = true;
+
+            if(success){
+                resolve({data: "This is dowload datas"});
+            }
+            else{
+                reject(new Error("Datas can't download successfuly :("));
+            }
+        }, 2000);
+    }); 
 };
 
-console.log(calculateAverage(10, 20, 30, 40, 50));
+console.log("Start Downloading Process...");
+
+fetchData()
+    .then(response => {
+        // Promice ugurla başa çatdı (resolve);
+        console.log(`Datas download successfuly! ${response.data}`);
+        return "Processed data";
+    })
+    .then(processedData => {
+        // Bu blok evvleki then - den sonra ortaya cixan deyisenle isleyir
+        console.log("Further processing", processedData);
+    })
+    .catch(error => {
+        console.error("Find error:", error.message);
+    })
+    .finally( () => {
+        // Bu blok is bitdikden sonra cavabdan asili olmauaraq ise dusecek
+        console.log("Block is done");
+    });
+
+console.log("Kod fechData - ni cagirdiqdan sonra helede oz funksionalligini davam edir");
