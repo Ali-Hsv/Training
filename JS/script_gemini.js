@@ -1148,16 +1148,103 @@
 
 //todo: - DELETE
 
-async function deletePost(){
-    const responce = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
-        method: 'DELETE',
+// async function deletePost(){
+//     const responce = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+//         method: 'DELETE',
+//     });
+//     if(responce.ok){
+//         console.log('Object delete without problem!');
+//     }
+//     else{
+//         console.error('Failed to delete the post:', responce.status);
+//     }
+// };
+
+// deletePost();
+
+//! Tasks_#8 ---------------------------
+
+//! -----Task_#1-----
+// async function fetchAndLogTodos() {
+//     try{
+//         const responce = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+//         if(!responce.ok){
+//             new Error(`Ops, u got a error - ${responce.status}`);
+//         }
+//         const data = await responce.json();
+
+//         const text = data.title;
+//         console.log(`This is text - ${text}`);
+//     }   
+//     catch(error){
+//         console.error('Ops, u got a error - ', error)
+//     }
+// };
+
+// fetchAndLogTodos();    
+
+//! -----Task_#2-----
+// async function createNewTodo(title, completed, userId){
+//     const newPost = {
+//         title: title,
+//         completed: completed,
+//         userId: userId,
+//     }
+
+//     try{
+//         const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(newPost),
+//         });
+//         if(!response.ok){
+//             throw new Error(`u got error -  ${response.status}`);
+//         }
+//         const data = await response.json();
+
+//         console.log(data);
+//     }
+//     catch(err){
+//         console.error('Got error', err.message);
+//     }
+// }
+
+// createNewTodo("Изучить fetch API", false, 1);
+// createNewTodo("Изучить fetch API - 2", true, 2);
+
+//! -----Task_#3-----
+async function updateExistingPost(postId, newTitle, newBody) {  
+    const resopnse = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({id: postId, title: newTitle, body: newBody, userId: 1,}),
     });
-    if(responce.ok){
-        console.log('Object delete without problem!');
+    const data = await resopnse.json();
+
+    console.log(`This is new post data -`, data);
+};
+
+updateExistingPost(2, "This is new title", "New body of post");
+
+async function deleteSpecificComment(commentId){
+    try{
+        const delResponse = await fetch(`https://jsonplaceholder.typicode.com/comments/${commentId}`, {
+            method: 'DELETE',
+        });
+        if(delResponse.ok){
+            console.log('Object deleted!');
+        }
+        else{ 
+            throw new Error(`Thomesing going wrong - ${delResponse.status}`);
+        }
     }
-    else{
-        console.error('Failed to delete the post:', responce.status);
+    catch(error){
+        console.error('U got error', error.message);
     }
 };
 
-deletePost();
+deleteSpecificComment(1);
