@@ -1002,51 +1002,162 @@
 
 //! -----Task_#3-----
 
-function simulationLoad(dataName, delay, shouldFail = false){
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if(shouldFail){
-                reject(new Error(`Ops! U got error`));
-            }else{
-                resolve(`User - ${dataName.name}, age - ${dataName.age}, gmail - ${dataName.gmail}`);
-            }
-        }, delay);
+// function simulationLoad(dataName, delay, shouldFail = false){
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if(shouldFail){
+//                 reject(new Error(`Ops! U got error`));
+//             }else{
+//                 resolve(`User - ${dataName.name}, age - ${dataName.age}, gmail - ${dataName.gmail}`);
+//             }
+//         }, delay);
+//     });
+// };
+
+// async function fetchSequentialData(data, data2) {
+//     try{
+//         const promiceData = await simulationLoad(data.dataName, data.delay, data.shouldFail);
+//         console.log(promiceData);
+//         const promiceData2 = await simulationLoad(data2.dataName, data2.delay, data2.shouldFail);
+//         console.log(promiceData2);
+//         console.log(`All data has been successfully uploaded: ${promiceData} and ${promiceData2}`);
+//     }
+//     catch (error){
+//         console.log(error.message);
+//         throw error;
+//     }
+// }
+
+// const userData = {
+//     dataName: {
+//         name: "Alice",
+//         age: 23,
+//         gmail: "alice@gmail.com"
+//     },
+//     delay: 1500,
+// }
+
+
+// const userData2 = {
+//     dataName: {
+//         name: "Bob",
+//         age: 25,
+//         gmail: "bob@gmail.com"
+//     },
+//     delay: 1000,
+//     shouldFail: false,
+// }
+
+// fetchSequentialData(userData, userData2);
+// console.log(`Find your user!`);
+
+//! fetch -----------------------------
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//     .then(response => {
+//         if(!response.ok){
+//             throw new Error(`We got a error - ${response.status}`);
+//         }
+
+//         return response.json();
+//     })
+//     .then(data =>{
+//         console.log('Data -> ', data);
+//     })
+//     .catch(err => {
+//         console.error('Have error', error);
+//     });
+
+//*-----------------------------------------------------------------
+
+// async function getPostData(id) {
+//     try{
+//         const responce = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+
+//         if(!responce.ok){
+//             throw new Error('HTTP error, status - ', responce.status);
+//         }
+
+//         const data = await responce.json();
+//         console.log('Post datas -> ', data);
+//         return data;
+//     }
+//     catch (error){
+//         console.error('Error on receipt of post - ', error);
+//         throw error;
+//     }
+// }
+
+// getPostData(100);
+
+//todo: -  GET
+
+// async function getPosts() {
+//     const responce = await fetch('https://jsonplaceholder.typicode.com/posts');
+//     const data = await responce.json();
+//     console.log(data);
+// };
+
+// getPosts();
+
+//todo: - POST
+
+// async function createPost() {
+//     const newPost = {
+//         title: 'My new Post',
+//         body: 'This is body my first new Post',
+//         userId:1,   
+//     };
+
+//     const responce = await fetch('https://jsonplaceholder.typicode.com/posts', {
+//         method: 'POST',
+//         headers: {
+//             'Content-type': 'application/json',
+//         },
+//         body: JSON.stringify(newPost),
+//     });
+//     const data = await responce.json();
+//     console.log('New post created: - ', data);
+// };
+
+// createPost();
+
+//todo: - PUT
+
+// async function updatePost() {
+//     const updatePost = {
+//         id: 1,
+//         title: 'My second title',
+//         body: 'This is body',
+//         userId: 1,
+//     };
+
+//     const responce = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(updatePost),
+//     });
+
+//     const data = await responce.json();
+//     console.log(data);
+// }
+
+// updatePost();
+
+//todo: - DELETE
+
+async function deletePost(){
+    const responce = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'DELETE',
     });
+    if(responce.ok){
+        console.log('Object delete without problem!');
+    }
+    else{
+        console.error('Failed to delete the post:', responce.status);
+    }
 };
 
-async function fetchSequentialData(data, data2) {
-    try{
-        const promiceData = await simulationLoad(data.dataName, data.delay, data.shouldFail);
-        console.log(promiceData);
-        const promiceData2 = await simulationLoad(data2.dataName, data2.delay, data2.shouldFail);
-        console.log(promiceData2);
-        console.log(`All data has been successfully uploaded: ${promiceData} and ${promiceData2}`);
-    }
-    catch (error){
-        console.log(error.message);
-        throw error;
-    }
-}
-
-const userData = {
-    dataName: {
-        name: "Alice",
-        age: 23,
-        gmail: "alice@gmail.com"
-    },
-    delay: 1500,
-}
-
-
-const userData2 = {
-    dataName: {
-        name: "Bob",
-        age: 25,
-        gmail: "bob@gmail.com"
-    },
-    delay: 1000,
-    shouldFail: false,
-}
-
-fetchSequentialData(userData, userData2);
-console.log(`Find your user!`);
+deletePost();
