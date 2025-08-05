@@ -42,3 +42,7 @@ input:hover{
     transform: scaleY(1.2);
     background-color: #ffefef;
 }
+p{
+    color: white;
+    position: absolute;
+};
