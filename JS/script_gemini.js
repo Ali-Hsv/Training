@@ -1215,36 +1215,63 @@
 // createNewTodo("Изучить fetch API - 2", true, 2);
 
 //! -----Task_#3-----
-async function updateExistingPost(postId, newTitle, newBody) {  
-    const resopnse = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({id: postId, title: newTitle, body: newBody, userId: 1,}),
-    });
-    const data = await resopnse.json();
+// async function updateExistingPost(postId, newTitle, newBody) {  
+//     const resopnse = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({id: postId, title: newTitle, body: newBody, userId: 1,}),
+//     });
+//     const data = await resopnse.json();
 
-    console.log(`This is new post data -`, data);
-};
+//     console.log(`This is new post data -`, data);
+// };
 
-updateExistingPost(2, "This is new title", "New body of post");
+// updateExistingPost(2, "This is new title", "New body of post");
 
-async function deleteSpecificComment(commentId){
+// async function deleteSpecificComment(commentId){
+//     try{
+//         const delResponse = await fetch(`https://jsonplaceholder.typicode.com/comments/${commentId}`, {
+//             method: 'DELETE',
+//         });
+//         if(delResponse.ok){
+//             console.log('Object deleted!');
+//         }
+//         else{ 
+//             throw new Error(`Thomesing going wrong - ${delResponse.status}`);
+//         }
+//     }
+//     catch(error){
+//         console.error('U got error', error.message);
+//     }
+// };
+
+// deleteSpecificComment(1);
+
+//? ------------------ Additional Tasks - fetch & more ------------------
+
+async function gotPokemon(name) {
     try{
-        const delResponse = await fetch(`https://jsonplaceholder.typicode.com/comments/${commentId}`, {
-            method: 'DELETE',
-        });
-        if(delResponse.ok){
-            console.log('Object deleted!');
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        if(!response.ok){
+            throw new Error('u got error -> ', response.status);
         }
-        else{ 
-            throw new Error(`Thomesing going wrong - ${delResponse.status}`);
-        }
+        const data = await response.json();
+        const pokemonImg = data.sprites.front_default;
+        console.log(pokemonImg);
+        const img = `
+            <img src = '${pokemonImg}' alt = ''>
+        `;
+        document.getElementById('imgDiv').innerHTML = img;
     }
-    catch(error){
-        console.error('U got error', error.message);
+    catch(err){
+        console.error(err.message);
     }
-};
+}
 
-deleteSpecificComment(1);
+let button = document.getElementById('myButton');
+let input = document.getElementById('myInput');
+button.addEventListener('click', () => {
+    gotPokemon(`${input.value}`);
+});
