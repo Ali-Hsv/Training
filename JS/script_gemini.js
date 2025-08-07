@@ -1258,6 +1258,7 @@ async function gotPokemon(name) {
             throw new Error('u got error -> ', response.status);
         }
         const data = await response.json();
+        console.log(data);
         const pokemonImg = data.sprites.front_default;
         console.log(pokemonImg);
         const img = `
