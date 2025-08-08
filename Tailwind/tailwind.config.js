@@ -15,6 +15,9 @@ module.exports = {
         },
         darker: '#780116',
       },
+      fontFamily: {
+        body: ['Oswald'],
+      }
     },
   },
   plugins: [],
