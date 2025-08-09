@@ -2,6 +2,9 @@ import './styles/style.css'
 import javascriptLogo from './assets/javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './scripts/counter.js'
+import { initBurgerMenu } from './scripts/navbar.js';
+
+initBurgerMenu();
 
 document.querySelector('#app').innerHTML = `
   <div>
