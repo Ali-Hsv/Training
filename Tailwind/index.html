@@ -10,8 +10,8 @@
   <body class="bg-gray-200 text-gray-600 font-body">
     <!-- <div id="app"></div> -->
 
-    <div> <!-- content wrapper -->
-      <div>
+    <div class="grid md:grid-cols-3"> <!-- content wrapper -->
+      <div class="md:col-span-1">
         <nav>
           <div>
             <h1 class="font-bold uppercase p-4 border-b border-gray-300">
@@ -39,7 +39,7 @@
         </nav>
       </div> <!-- end nav -->
 
-      <main class="px-16 py-5">
+      <main class="px-16 py-5 bg-slate-300 md:col-span-2">
         <div class="flex justify-center md:justify-end">
           <a href="#" class="text-primary">Log in</a>
           <a href="#" class="text-primary ml-3">Sing up</a>
@@ -65,7 +65,7 @@
         <div>
           <h4 class="font-bold mt-12 pb-2 border-b border-gray-300">Latest Recipies</h4>
 
-          <div class="flex gap-3 mt-8 ">
+          <div class="mt-8 grid lg:grid-cols-3 gap-5">
             <!--card 1-->
             <div class="card">
               <img class="w-full h-54 sm:h-64 object-cover" src="./src/assets/ceca7a12-5b1d-4a52-9eca-f1d6f8473522.jpeg" alt="img">
