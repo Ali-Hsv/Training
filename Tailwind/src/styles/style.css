@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.card{
+  @apply bg-white rounded-xl overflow-hidden shadow-slate-400 shadow-lg relative;
+}
+
+.badge{
+  @apply bg-secondary-200 text-secondary-100 text-sm font-bold rounded-full py-2 px-3  absolute top-0 ml-2 mt-2;
+}
+
 /* 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
