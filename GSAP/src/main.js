@@ -16,6 +16,23 @@ function blockAnimation1(){
   });
 }
 
+function blockAnimation2(){
+  //from -> to
+  gsap.fromTo(".block",
+    {
+      x: -400,
+      opacity: 1,
+      rotation: 0,
+    },
+    {
+      duration: 2,
+      x: 0,
+      opacity: 1,
+      rotation: 360,
+      ease: 'elastic.in'
+    }
+  );
+}
 
 const button = document.querySelector(".button");
 const block = document.getElementById("block-visibility");
@@ -34,6 +51,11 @@ const block = document.getElementById("block-visibility");
 // });
 
 //todo: gsap.to - 
+// button.addEventListener('click', ()=>{
+//   blockAnimation1();
+// });
+
+//todo: gsap.fromTo - 
 button.addEventListener('click', ()=>{
-  blockAnimation1();
+  blockAnimation2();
 });
