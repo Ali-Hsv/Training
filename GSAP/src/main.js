@@ -64,35 +64,53 @@ import gsap from 'gsap'
 
 //! - gsap.to(), gsap.from(), gsap.fromTo() -> Task
 
-gsap.to(".block1", {
-  x: -300,
-  opacity: 1, 
-  rotate: -180,
-  duration: 1,
-  ease: 'back.inOut'
-});
+// gsap.to(".block1", {
+//   x: -300,
+//   opacity: 1, 
+//   rotate: -180,
+//   duration: 1,
+//   ease: 'back.inOut'
+// });
 
-gsap.from(".block2", {
-  y: -300,
-  opacity: 0, 
-  rotate: 270,
-  duration: 1,
-  ease: 'circ.out'
-});
+// gsap.from(".block2", {
+//   y: -300,
+//   opacity: 0, 
+//   rotate: 270,
+//   duration: 1,
+//   ease: 'circ.out'
+// });
 
-gsap.fromTo(".block3", 
-  {
-    x: 0,
-    y: 0,
-    opacity: 1, 
-    rotate: 0,
-  },
+// gsap.fromTo(".block3", 
+//   {
+//     x: 0,
+//     y: 0,
+//     opacity: 1, 
+//     rotate: 0,
+//   },
+//   {
+//     x: 300,
+//     y: -200,
+//     // opacity: 0, 
+//     rotate: 120,
+//     duration: 3,
+//     ease: 'elastic.out',
+//     onComplete: () => console.log("Nice")
+//   }
+// );
+
+//! - Параметры: duration, delay, repeat, yoyo, ease -> Task
+
+gsap.to(".block3", 
   {
     x: 300,
-    y: -200,
-    // opacity: 0, 
-    rotate: 120,
-    duration: 3,
-    ease: 'elastic.out',
+    y: -200, 
+    rotate: 180,
+    delay: 0.5,//* The delay before the animation starts (in seconds).
+    duration: 3, //*  Sets the animation execution time in seconds
+    repeat: -1, //* Specifies how many times the animation will be repeated (if -1 animation loop)
+    yoyo: true, //* If true, the animation is "played backwards" on each repeat
+    ease: 'elastic.in', //* Controls the acceleration/deceleration of the animation
+    repeatDelay: 0.5,
+    onComplete: () => console.log("Nice")
   }
 );
