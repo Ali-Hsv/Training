@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.block{
-  @apply bg-slate-300 rounded-xl w-20 h-20 flex justify-center items-center
+.block1{
+  @apply bg-green-400 rounded-xl w-20 h-20 flex justify-center items-center
+}
+.block2{
+  @apply bg-yellow-300 rounded-xl w-20 h-20 flex justify-center items-center
+}
+.block3{
+  @apply bg-red-400 rounded-xl w-20 h-20 flex justify-center items-center
 }
 
 .button{
