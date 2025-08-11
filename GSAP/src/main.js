@@ -98,19 +98,43 @@ import gsap from 'gsap'
 //   }
 // );
 
-//! - Параметры: duration, delay, repeat, yoyo, ease -> Task
+//! - duration, delay, repeat, yoyo, ease -> Task
 
-gsap.to(".block3", 
-  {
-    x: 300,
-    y: -200, 
-    rotate: 180,
-    delay: 0.5,//* The delay before the animation starts (in seconds).
-    duration: 3, //*  Sets the animation execution time in seconds
-    repeat: -1, //* Specifies how many times the animation will be repeated (if -1 animation loop)
-    yoyo: true, //* If true, the animation is "played backwards" on each repeat
-    ease: 'elastic.in', //* Controls the acceleration/deceleration of the animation
-    repeatDelay: 0.5,
-    onComplete: () => console.log("Nice")
-  }
-);
+// gsap.to(".block3", 
+//   {
+//     x: 300,
+//     y: -200, 
+//     rotate: 180,
+//     delay: 0.5,//* The delay before the animation starts (in seconds).
+//     duration: 2, //*  Sets the animation execution time in seconds
+//     repeat: -1, //* Specifies how many times the animation will be repeated (if -1 animation loop)
+//     yoyo: true, //* If true, the animation is "played backwards" on each repeat
+//     ease: 'elastic.in', //* Controls the acceleration/deceleration of the animation
+//     repeatDelay: 0.5,
+//     onComplete: () => console.log("Nice")
+//   }
+// );
+
+//! - timeline() -> 
+
+// const tl = gsap.timeline();
+
+// tl.to('.block1', {x:-200, duration: 1, repeat: -1, yoyo: true, ease: 'circ.out',})
+//   .to('.block2', {y:200, duration: 2, repeat: 2, yoyo: true, ease: 'elastic.out'});
+
+// const tl = gsap.timeline({repeat: -1, yoyo: true});
+
+// tl.to('.block1', {x: -100, duration: 1, ease: 'power4.in'})
+//   .to('.block1', {x: 0, y: -150, duration: 1, ease: 'elastic.out'})
+//   .from('.block2', {y: 200, opacity: 0, duration: 2, ease: 'elastic.out'}, "+=0.5");
+
+const tl = gsap.timeline({ paused: true, yoyo: true});
+
+tl.to('.block1', {duration: 1, x: -300, repeat: -1, ease: 'power3.in'})
+  .fromTo('.block2', {y: 200, opacity: 0, duration: 1, ease: 'power3.in'}, {x: 150, y: -200, rotate: 180, duration: 1.5, opacity: 1, ease: 'elastic.out'}, '+=0.5')
+  .from('.block3', {y: -250, duration:2, ease: 'elastic.inOut', opacity: 0})
+
+document.getElementById('play').addEventListener('click', () => {tl.play()})
+document.getElementById('pause').addEventListener('click', () => {tl.pause()})
+document.getElementById('reverse').addEventListener('click', () => {tl.reverse()})
+document.getElementById('restart').addEventListener('click', () => {tl.restart()})
