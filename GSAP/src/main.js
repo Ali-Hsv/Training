@@ -166,3 +166,13 @@ import gsap from 'gsap'
 //     amount: 0.6, //* total stagger allocation time
 //   }
 // });
+
+//! - Keyframes  ->
+
+gsap.to('.block1', {
+  keyframes: [
+    {x: -100, duration: 0.3, ease: 'power1.out'}, //* 1st frame 
+    {y: -50, duration: 0.2, ease: 'power2.out'}, //* 2nd frame
+    {opacity: 0, duration: 0.2} //* frame 3
+  ]
+})
