@@ -128,13 +128,41 @@ import gsap from 'gsap'
 //   .to('.block1', {x: 0, y: -150, duration: 1, ease: 'elastic.out'})
 //   .from('.block2', {y: 200, opacity: 0, duration: 2, ease: 'elastic.out'}, "+=0.5");
 
-const tl = gsap.timeline({ paused: true, yoyo: true});
+//! - timeline() -> Task
 
-tl.to('.block1', {duration: 1, x: -300, repeat: -1, ease: 'power3.in'})
-  .fromTo('.block2', {y: 200, opacity: 0, duration: 1, ease: 'power3.in'}, {x: 150, y: -200, rotate: 180, duration: 1.5, opacity: 1, ease: 'elastic.out'}, '+=0.5')
-  .from('.block3', {y: -250, duration:2, ease: 'elastic.inOut', opacity: 0})
+// const tl = gsap.timeline({ paused: true, yoyo: true});
 
-document.getElementById('play').addEventListener('click', () => {tl.play()})
-document.getElementById('pause').addEventListener('click', () => {tl.pause()})
-document.getElementById('reverse').addEventListener('click', () => {tl.reverse()})
-document.getElementById('restart').addEventListener('click', () => {tl.restart()})
+// tl.to('.block1', {duration: 1, x: -300, repeat: -1, ease: 'power3.in'})
+//   .fromTo('.block2', {y: 200, opacity: 0, duration: 1, ease: 'power3.in'}, {x: 150, y: -200, rotate: 180, duration: 1.5, opacity: 1, ease: 'elastic.out'}, '+=0.5')
+//   .from('.block3', {y: -250, duration:2, ease: 'elastic.inOut', opacity: 0});
+
+// document.getElementById('play').addEventListener('click', () => {tl.play()});
+// document.getElementById('pause').addEventListener('click', () => {tl.pause()});
+// document.getElementById('reverse').addEventListener('click', () => {tl.reverse()});
+// document.getElementById('restart').addEventListener('click', () => {tl.restart()});
+
+//! - Stagger ->
+
+// gsap.from(".item-list", {
+//   y: 50,
+//   opacity: 0,
+//   duration: 0.5,
+//   stagger: {
+//     each: 0.1, //* item delay
+//     from: "end", //* start from centre ("start", "end", [0, 1, 2...])
+//     ease: 'power1.out' //* stagger smoothness
+//   },
+// });
+
+// gsap.from('.item-list-grid', {
+//   x:100,
+//   opacity:0,
+//   duration:0.6,
+//   ease: "back.out(1.7)", //* elastic effect
+//   stagger:{
+//     grid: [3, 3],
+//     from: "center",
+//     axis: "x",
+//     amount: 0.6, //* total stagger allocation time
+//   }
+// });
