@@ -167,12 +167,29 @@ import gsap from 'gsap'
 //   }
 // });
 
-//! - Keyframes  ->
+//! - Keyframes ->
+
+// gsap.to('.block1', {
+//   keyframes: [
+//     {x: -100, duration: 0.3, ease: 'power1.out'}, //* 1st frame 
+//     {y: -50, duration: 0.2, ease: 'power2.out'}, //* 2nd frame
+//     {opacity: 0, duration: 0.2} //* frame 3
+//   ]
+// });
+
+//! - Callbacks: onStart, onComplete, onUpdate ->
 
 gsap.to('.block1', {
-  keyframes: [
-    {x: -100, duration: 0.3, ease: 'power1.out'}, //* 1st frame 
-    {y: -50, duration: 0.2, ease: 'power2.out'}, //* 2nd frame
-    {opacity: 0, duration: 0.2} //* frame 3
-  ]
-})
+  y: -200,
+  // opacity: 0,
+  duration: 3,
+  rotateZ: 180,
+  rotateX: 180,
+  rotateY: 180,
+  ease: 'elastic',
+  // repeat: -1, 
+  onStart: () => {console.log("Animation start")},
+  onComplete: () => {console.log("Animation end")},
+  onUpdate: () => {console.log("Animation update")},
+  onRepeat: () => {console.log("Animation repeat")}
+});
