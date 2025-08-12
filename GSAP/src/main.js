@@ -193,7 +193,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 //   onRepeat: () => {console.log("Animation repeat")}
 // });
 
-//! - ScrollTrigger -
+//! - ScrollTrigger ->
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -216,26 +216,43 @@ gsap.registerPlugin(ScrollTrigger);
 //   }
 // );
 
-gsap.to('.box1', {
-  rotateY: 0,
-  rotateZ: 90,
-  rotateX: 180,
-  opacity: 0,
-  scale: 1.2,
-  ease: 'elastic.inOut',
+// gsap.to('.box1', {
+//   rotateY: 0,
+//   rotateZ: 90,
+//   rotateX: 180,
+//   opacity: 0,
+//   scale: 1.2,
+//   ease: 'elastic.inOut',
 
-  scrollTrigger: {
-    trigger:'.box2',
-    start: 'top center',
-    end: 'bottom top',
-    scrub:true,
-    markers: true,
-  },
-}
-)
+//   scrollTrigger: {
+//     trigger:'.box2',
+//     start: 'top center',
+//     end: 'bottom top',
+//     scrub:true,
+//     markers: true,
+//   },
+// }
+// );
 
 //todo - Callbacks:
 //* onEnter: Triggers when the trigger enters the field of view.
 //* onLeave: Triggers when the trigger leaves the field of view.
 //* onToggle: triggered when the ScrollTrigger status changes from "active" to "inactive" and vice versa.
 //* onEnterBack, onLeaveBack: triggers when scrolling back.
+
+const container = document.querySelector('.horizontal-sections-container');
+const totalWidth = container.scrollWidth - window.innerWidth;
+const horizontalScrollTween = gsap.to(container, {
+  x: -totalWidth,
+  ease: 'none'
+});
+
+ScrollTrigger.create({
+  trigger: ".horizontal-sections-wrapper",
+  pin: true,
+  start: 'top top',
+  end: "+=" + totalWidth,
+  scrub: 1,
+  animation: horizontalScrollTween,
+  markers: true
+})

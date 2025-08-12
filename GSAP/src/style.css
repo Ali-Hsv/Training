@@ -11,7 +11,26 @@
 .main-box{
   height: 150vh;
 }
-
+.horizontal-sections-container{
+  width: 400vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  background: #000;
+}
+.section{
+  flex-shrink: 0; /* Important: prevents sections from shrinking */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  transition: backgroun-color 0.5 ease;
+}
 .space{
   height: 100vh;
   display: flex;
