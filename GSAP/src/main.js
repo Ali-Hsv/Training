@@ -2,9 +2,8 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
-import './style.css'
 import gsap from 'gsap'
-
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 //! - gsap.to(), gsap.from(), gsap.fromTo() ->
 // function blockAnimation1(){
@@ -179,17 +178,64 @@ import gsap from 'gsap'
 
 //! - Callbacks: onStart, onComplete, onUpdate ->
 
-gsap.to('.block1', {
-  y: -200,
-  // opacity: 0,
-  duration: 3,
-  rotateZ: 180,
+// gsap.to('.block1', {
+//   y: -200,
+//   // opacity: 0,
+//   duration: 3,
+//   rotateZ: 180,
+//   rotateX: 180,
+//   rotateY: 180,
+//   ease: 'elastic',
+//   // repeat: -1, 
+//   onStart: () => {console.log("Animation start")},
+//   onComplete: () => {console.log("Animation end")},
+//   onUpdate: () => {console.log("Animation update")},
+//   onRepeat: () => {console.log("Animation repeat")}
+// });
+
+//! - ScrollTrigger -
+
+gsap.registerPlugin(ScrollTrigger);
+
+// gsap.fromTo('.box1', {
+//     rotate: 0,
+//   },
+//   {
+//     rotate: 90,
+//     scrollTrigger: {
+//       trigger: ".box1",
+//       start: "top center", //* The animation will start when the top of the .box is in the center of the screen.
+//       end: "bottom top", //* The animation will end when the bottom .box leaves the screen. 
+//       // end: "+=500" // Unpin via 500px scroll.
+//       scrub: 1, //* The animation will scroll along with scrolling
+//       markers: true, //*  Shows multicolored markers on the page
+//       toggleClass: "active", //* Adds the 'active' class to the .box when it is active.
+//       pin: true,
+//       onEnter: () => console.log("The element has entered the screen!") //* is triggered when the trigger enters the field of view.
+//     }
+//   }
+// );
+
+gsap.to('.box1', {
+  rotateY: 0,
+  rotateZ: 90,
   rotateX: 180,
-  rotateY: 180,
-  ease: 'elastic',
-  // repeat: -1, 
-  onStart: () => {console.log("Animation start")},
-  onComplete: () => {console.log("Animation end")},
-  onUpdate: () => {console.log("Animation update")},
-  onRepeat: () => {console.log("Animation repeat")}
-});
+  opacity: 0,
+  scale: 1.2,
+  ease: 'elastic.inOut',
+
+  scrollTrigger: {
+    trigger:'.box2',
+    start: 'top center',
+    end: 'bottom top',
+    scrub:true,
+    markers: true,
+  },
+}
+)
+
+//todo - Callbacks:
+//* onEnter: Triggers when the trigger enters the field of view.
+//* onLeave: Triggers when the trigger leaves the field of view.
+//* onToggle: triggered when the ScrollTrigger status changes from "active" to "inactive" and vice versa.
+//* onEnterBack, onLeaveBack: triggers when scrolling back.

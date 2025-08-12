@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.main-box{
+  height: 150vh;
+}
+
+.space{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .block1{
   @apply bg-green-400 rounded-xl w-20 h-20 flex justify-center items-center shadow-md shadow-slate-700
 }
