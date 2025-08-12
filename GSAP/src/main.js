@@ -244,7 +244,7 @@ const container = document.querySelector('.horizontal-sections-container');
 const totalWidth = container.scrollWidth - window.innerWidth;
 const horizontalScrollTween = gsap.to(container, {
   x: -totalWidth,
-  ease: 'none'
+  ease: 'none',
 });
 
 ScrollTrigger.create({
@@ -254,5 +254,19 @@ ScrollTrigger.create({
   end: "+=" + totalWidth,
   scrub: 1,
   animation: horizontalScrollTween,
-  markers: true
-})
+  markers: true,
+});
+
+gsap.utils.toArray(".section").forEach((section, i) => {
+    ScrollTrigger.create({
+        trigger: section,
+        containerAnimation: horizontalScrollTween,
+        start: "left center",
+        end: "right center",
+        onEnter: () => gsap.to(section, { opacity: 1, toggleClass: "bg-red-700", duration: 0.3, ease: "back.out(1.7)" }),
+        onLeave: () => gsap.to(section, { opacity: 0.5, duration: 0.3 }),
+        onEnterBack: () => gsap.to(section, { opacity: 1, toggleClass: "bg-red-700", duration: 0.3, ease: "back.out(1.7)" }),
+        onLeaveBack: () => gsap.to(section, { opacity: 0.5, duration: 0.3 }),
+        markers: true
+    });
+});
