@@ -7,6 +7,22 @@
   padding: 0px;
 }
 
+svg{
+  display: block;
+  margin: 50vh auto; /* Размещаем SVG в центре экрана после прокрутки */
+  border: 1px solid #e0e0e0;
+  max-width: 80%;
+  height: auto;
+}
+
+path {
+  fill: none; /* Линии обычно не имеют заливки */
+  stroke: #007bff; /* Цвет линии */
+  stroke-width: 4; /* Толщина линии */
+  stroke-linecap: round; /* Скругление концов линии */
+  stroke-linejoin: round; /* Скругление углов соединения линий */
+}
+/* 
 .main-box{
   height: 150vh;
 }
@@ -19,7 +35,7 @@
 }
 .section{
   flex-shrink: 0; /* Important: prevents sections from shrinking */
-  width: 100vw;
+/*  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -29,7 +45,7 @@
   color: white;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   transition: backgroun-color 0.5 ease;
-}
+} */
 .space{
   height: 100vh;
   display: flex;
